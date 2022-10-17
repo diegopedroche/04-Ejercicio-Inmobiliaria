@@ -2,27 +2,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="5dp">
+        android:padding="10dp">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/lbDireccionPisoModel"
             android:layout_width="249dp"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="6"
             android:text="TextView" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/lbNumeroPisoModel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_marginStart="5dp"
             android:layout_weight="1"
             android:text="TextView" />
     </LinearLayout>
@@ -31,23 +32,36 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/lbCiudadPisoModel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_marginEnd="5dp"
             android:layout_weight="1"
             android:text="TextView" />
 
-        <RatingBar
-            android:id="@+id/ratingBar"
+        <TextView
+            android:id="@+id/lbProvinciaPisoModel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_marginStart="5dp"
             android:layout_weight="1"
-            android:numStars="5" />
+            android:text="TextView" />
+
     </LinearLayout>
+
+    <RatingBar
+        android:id="@+id/rbValoracionPisoModel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:stepSize="0.5" />
 
 </LinearLayout>

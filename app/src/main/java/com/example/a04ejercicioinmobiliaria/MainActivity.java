@@ -3,6 +3,7 @@ package com.example.a04ejercicioinmobiliaria;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.a04ejercicioinmobiliaria.configuraciones.Constantes;
 import com.example.a04ejercicioinmobiliaria.modelos.Piso;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -14,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
 import com.example.a04ejercicioinmobiliaria.databinding.ActivityMainBinding;
 
@@ -32,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        pisos = new ArrayList<Piso>();
+        pisos = new ArrayList<>();
         inicializaLaunchers();
 
         setSupportActionBar(binding.toolbar);
@@ -52,20 +55,35 @@ public class MainActivity extends AppCompatActivity {
             public void onActivityResult(ActivityResult result) {
                 if (result.getResultCode() == RESULT_OK){
                     if (result.getData() != null && result.getData().getExtras() != null){
-                        Piso piso = (Piso) result.getData().getExtras().getSerializable("PISO");
+                        Piso piso = (Piso) result.getData().getExtras().getSerializable(Constantes.PISO);
                         pisos.add(piso);
-                        pintarElementos();
+                        muestraPisoContenido();
                     }
                 }
             }
         });
     }
 
-    private void pintarElementos() {
-        for (Piso p:pisos) {
+    private void muestraPisoContenido() {
+        binding.contentMain.contenedor.removeAllViews();
 
-            LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
-            View alumnoView = inflater.inflate(R.layout.piso_model_view, null);
+        for (int i = 0; i < pisos.size(); i++) {
+            Piso piso = pisos.get(i);
+
+            View pisoView = LayoutInflater.from(MainActivity.this).inflate(R.layout.piso_model_view,null);
+            TextView lbDireccion = pisoView.findViewById(R.id.lbDireccionPisoModel);
+            TextView lbNumero = pisoView.findViewById(R.id.lbNumeroPisoModel);
+            TextView lbCiudad = pisoView.findViewById(R.id.lbCiudadPisoModel);
+            TextView lbProvincia = pisoView.findViewById(R.id.lbProvinciaPisoModel);
+            RatingBar rbValoracion = pisoView.findViewById(R.id.rbValoracionPisoModel);
+
+            lbDireccion.setText(piso.getDireccion());
+            lbNumero.setText(String.valueOf(piso.getNumero()));
+            lbCiudad.setText(piso.getCiudad());
+            lbProvincia.setText(piso.getProvincia());
+            rbValoracion.setRating(piso.getValoracion());
+
+            binding.contentMain.contenedor.addView(pisoView);
         }
     }
 }

@@ -14,7 +14,7 @@
         android:layout_gravity="center"
         android:layout_margin="10dp"
         android:ems="10"
-        android:hint="Direccion"
+        android:hint="@string/direccion"
         android:inputType="textPersonName" />
 
     <EditText
@@ -24,8 +24,8 @@
         android:layout_gravity="center"
         android:layout_margin="10dp"
         android:ems="10"
-        android:hint="Numero"
-        android:inputType="textPersonName" />
+        android:hint="@string/n_mero"
+        android:inputType="number" />
 
     <EditText
         android:id="@+id/txtCiudadAdd"
@@ -34,7 +34,7 @@
         android:layout_gravity="center"
         android:layout_margin="10dp"
         android:ems="10"
-        android:hint="Ciudad"
+        android:hint="@string/ciudad"
         android:inputType="textPersonName" />
 
     <EditText
@@ -44,7 +44,7 @@
         android:layout_gravity="center"
         android:layout_margin="10dp"
         android:ems="10"
-        android:hint="Provincia"
+        android:hint="@string/provincia"
         android:inputType="textPersonName" />
 
     <EditText
@@ -52,10 +52,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="10dp"
         android:ems="10"
-        android:hint="Codigo Postal"
-        android:inputType="textPersonName" />
+        android:hint="@string/c_digo_postal"
+        android:inputType="number" />
 
     <RatingBar
         android:id="@+id/wgRating"
@@ -64,7 +63,8 @@
         android:layout_gravity="center"
         android:layout_margin="10dp"
         android:numStars="5"
-        android:rating="0" />
+        android:rating="0"
+        android:stepSize="0.5" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -73,18 +73,17 @@
 
         <Button
             android:id="@+id/btnCancelarAdd"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Cancelar" />
+            android:text="@string/cancelar" />
 
         <Button
             android:id="@+id/btnCrearAdd"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
             android:layout_weight="1"
-            android:text="Crear" />
+            android:text="@string/crear" />
     </LinearLayout>
 
 </LinearLayout>

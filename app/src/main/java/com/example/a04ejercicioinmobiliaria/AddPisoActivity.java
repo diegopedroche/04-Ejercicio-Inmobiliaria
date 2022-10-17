@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.a04ejercicioinmobiliaria.configuraciones.Constantes;
 import com.example.a04ejercicioinmobiliaria.databinding.ActivityAddPisoBinding;
 import com.example.a04ejercicioinmobiliaria.modelos.Piso;
 
@@ -31,10 +32,10 @@ public class AddPisoActivity extends AppCompatActivity {
         binding.btnCrearAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Piso piso = new Piso();
+                Piso piso = createPiso();
                 if(piso != null) {
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("PISO", piso);
+                    bundle.putSerializable(Constantes.PISO, piso);
                     Intent intent = new Intent();
                     intent.putExtras(bundle);
                     setResult(RESULT_OK, intent);
@@ -47,8 +48,9 @@ public class AddPisoActivity extends AppCompatActivity {
     }
 
     private Piso createPiso(){
-        if(binding.txtDireccionAdd.getText().toString().isEmpty() || binding.txtNumeroAdd.getText().toString().isEmpty() || binding.txtCiudadAdd.getText().toString().isEmpty()
-            || binding.txtProvinciaAdd.getText().toString().isEmpty() || binding.txtCPAdd.getText().toString().isEmpty()){
+        if(binding.txtDireccionAdd.getText().toString().isEmpty() || binding.txtNumeroAdd.getText().toString().isEmpty() ||
+                binding.txtCiudadAdd.getText().toString().isEmpty() || binding.txtProvinciaAdd.getText().toString().isEmpty() ||
+                binding.txtCPAdd.getText().toString().isEmpty()) {
             return null;
         }
 
