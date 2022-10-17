@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".AddPisoActivity" >
+    tools:context=".EditPisoActivity">
 
     <EditText
-        android:id="@+id/txtDireccionAdd"
+        android:id="@+id/txtDireccionEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -18,7 +18,7 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/txtNumeroAdd"
+        android:id="@+id/txtNumeroEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -28,7 +28,7 @@
         android:inputType="number" />
 
     <EditText
-        android:id="@+id/txtCiudadAdd"
+        android:id="@+id/txtCiudadEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -38,7 +38,7 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/txtProvinciaAdd"
+        android:id="@+id/txtProvinciaEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -48,7 +48,7 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/txtCPAdd"
+        android:id="@+id/txtCPEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -57,7 +57,7 @@
         android:inputType="number" />
 
     <RatingBar
-        android:id="@+id/wgRating"
+        android:id="@+id/wgRatingEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -68,23 +68,24 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnCancelarAdd"
+            android:id="@+id/btnCancelarEdit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/cancelar" />
 
         <Button
-            android:id="@+id/btnCrearAdd"
+            android:id="@+id/btnCrearEdit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_weight="1"
             android:text="@string/crear" />
+
     </LinearLayout>
 
 </LinearLayout>
