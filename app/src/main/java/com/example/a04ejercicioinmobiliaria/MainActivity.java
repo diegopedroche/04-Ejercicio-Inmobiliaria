@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private ArrayList<Piso> pisos;
     private ActivityResultLauncher<Intent> launcherCrearPisos;
+    private ActivityResultLauncher<Intent> launcherEditarPisos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +42,15 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(binding.toolbar);
 
 
+
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 launcherCrearPisos.launch(new Intent(MainActivity.this, AddPisoActivity.class));
             }
         });
+
+
     }
 
     private void inicializaLaunchers() {
@@ -62,6 +66,30 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        launcherEditarPisos = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+            @Override
+            public void onActivityResult(ActivityResult result) {
+                if (result.getResultCode() == RESULT_OK){
+                    if (result.getData() != null){
+                        //Si existe piso lo edito
+                        if (result.getData() != null && result.getData().getExtras().getSerializable(Constantes.PISO) != null){
+                            Piso piso = (Piso) result.getData().getExtras().getSerializable(Constantes.PISO);
+                            int posicion = result.getData().getExtras().getInt(Constantes.POSICION);
+                            pisos.set(posicion, piso);
+                            muestraPisoContenido();
+                        }else{
+                            //si no existe piso lo elimino
+                            if (result.getData().getExtras() != null){
+                                int posicion = result.getData().getExtras().getInt(Constantes.POSICION);
+                                pisos.remove(posicion);
+                                muestraPisoContenido();
+                            }
+                        }
+                    }
+                }
+            }
+        });
     }
 
     private void muestraPisoContenido() {
@@ -69,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
         for (int i = 0; i < pisos.size(); i++) {
             Piso piso = pisos.get(i);
+            final int finalI = i;
 
             View pisoView = LayoutInflater.from(MainActivity.this).inflate(R.layout.piso_model_view,null);
             TextView lbDireccion = pisoView.findViewById(R.id.lbDireccionPisoModel);
@@ -82,6 +111,19 @@ public class MainActivity extends AppCompatActivity {
             lbCiudad.setText(piso.getCiudad());
             lbProvincia.setText(piso.getProvincia());
             rbValoracion.setRating(piso.getValoracion());
+
+            pisoView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(MainActivity.this,EditPisoActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(Constantes.PISO,piso);
+                    bundle.putInt(Constantes.POSICION,finalI);
+                    intent.putExtras(bundle);
+                    setResult(RESULT_OK);
+                    launcherEditarPisos.launch(intent);
+                }
+            });
 
             binding.contentMain.contenedor.addView(pisoView);
         }

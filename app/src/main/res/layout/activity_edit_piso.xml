@@ -79,12 +79,19 @@
             android:text="@string/cancelar" />
 
         <Button
-            android:id="@+id/btnCrearEdit"
+            android:id="@+id/btnEditarEdit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_weight="1"
-            android:text="@string/crear" />
+            android:text="editar" />
+
+        <Button
+            android:id="@+id/btnEliminarEdit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Eliminar" />
 
     </LinearLayout>
 
